@@ -1,0 +1,11 @@
+.collapseButton {
+  width: fit-content;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(50%);
+}
+
+.navbar {
+  position: relative;
+}
