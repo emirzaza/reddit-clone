@@ -1,54 +1,34 @@
-import { ActionIcon, AppShell, Button } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { AppShell, Button, Center, Flex } from '@mantine/core';
 import Index from './components/sidebar/index';
-import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import classes from './App.module.css';
+import Navbar from './components/navbar';
+import Content from './components/content/content';
+import { useNavbar } from './contexts/NavbarContext';
 
 function App() {
-  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
-  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+  const { opened } = useNavbar();
 
   return (
     <AppShell
-      className="bg-black/90"
       padding="md"
       header={{ height: 60 }}
       navbar={{
         width: 300,
         breakpoint: 'sm',
-        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+        collapsed: { mobile: opened, desktop: !opened },
       }}
     >
       <AppShell.Header>
-        <div className="flex flex-row h-full">
-          <img className="h-full p-1" src="logo.png" />
-          <h1 className="text-Black">ReddIt</h1>
-          <IconChevronLeft
-            className="sm:hidden"
-            onClick={toggleMobile}
-          ></IconChevronLeft>
-        </div>
+        <Navbar></Navbar>
       </AppShell.Header>
 
-      <AppShell.Navbar classNames={{ navbar: classes.navbar }}>
-        <ActionIcon
-          onClick={toggleDesktop}
-          variant="filled"
-          color="dark"
-          radius="xl"
-          classNames={{
-            root: classes.collapseButton,
-          }}
-        >
-          {desktopOpened ? (
-            <IconChevronLeft></IconChevronLeft>
-          ) : (
-            <IconChevronRight></IconChevronRight>
-          )}
-        </ActionIcon>
+      <AppShell.Navbar>
         <Index></Index>
       </AppShell.Navbar>
-      <AppShell.Main>Main</AppShell.Main>
+
+      <AppShell.Main className={classes.main}>
+        <Content></Content>
+      </AppShell.Main>
     </AppShell>
   );
 }

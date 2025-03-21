@@ -11,7 +11,7 @@ function Category({ title, aytım, iconName }) {
   return (
     <div
       onClick={handleClick}
-      className="flex flex-col bg-none text-white rounded-2xl w-50 px-3 py-2 hover:bg-gray-50/5 "
+      className="flex flex-col bg-none  rounded-2xl w-50 px-3 py-2 hover:bg-[var(--mantine-color-default-hover)] "
     >
       <div className="flex gap-3">
         <h1>{iconMapper[iconName]}</h1>
@@ -21,10 +21,7 @@ function Category({ title, aytım, iconName }) {
       <div>
         <ul className={isOpen ? 'block' : 'hidden'}>
           {aytım.map((it, index) => (
-            <li
-              className="hover:bg-gray-50/10 px-3 py-2 pl-9 rounded-2xl"
-              key={index}
-            >
+            <li className=" px-3 py-2 pl-9 rounded-2xl" key={index}>
               {it}
             </li>
           ))}

@@ -44,7 +44,7 @@ function Index() {
     loadItems();
   }, []);
   return (
-    <div className="w-full h-full bg-black/90 flex justify-center pt-5 ">
+    <div className="w-full h-full  flex justify-center pt-5 ">
       <ul>
         {data
           .filter(item => item.type === 'single')

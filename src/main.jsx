@@ -6,11 +6,14 @@ import { MantineProvider } from '@mantine/core';
 import './services/server.js';
 import '@mantine/carousel/styles.css';
 import '@mantine/core/styles.css';
+import NavbarProvider from './contexts/NavbarContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <MantineProvider>
-      <App />
+    <MantineProvider defaultColorScheme="dark">
+      <NavbarProvider>
+        <App />
+      </NavbarProvider>
     </MantineProvider>
   </StrictMode>
 );
