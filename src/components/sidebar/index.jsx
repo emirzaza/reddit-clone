@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getSidebar } from '../../services/api';
 import Single from './components/Single';
 import Category from './components/Category';
+import { Link } from '@tanstack/react-router';
 
 function Index() {
   const [error, setError] = useState(null);
@@ -50,7 +51,7 @@ function Index() {
           .filter(item => item.type === 'single')
           .map((item, index) => (
             <li key={index}>
-              <Single title={item.title} iconName={item.icon}></Single>
+              <Link to={`/t/${item.slug}`}><Single title={item.title} iconName={item.icon}></Single></Link>
             </li>
           ))}
 
@@ -58,11 +59,12 @@ function Index() {
           .filter(item => item.type === 'category')
           .map((item, index) => (
             <li key={index}>
-              <Category
+             <Category
                 title={item.category.title}
                 iconName={item.category.icon}
                 aytım={item.items.map(subItem => subItem.title)}
-              ></Category>
+              > </Category>
+              
             </li>
           ))}
       </ul>

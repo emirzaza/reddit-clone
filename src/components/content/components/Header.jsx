@@ -1,12 +1,12 @@
 import { Button } from '@mantine/core';
 import { useState } from 'react';
-function Header() {
+function Header({name}) {
   const [on, setOn] = useState(true);
 
   return (
     <div className="flex flex-col">
       <div>
-        <h1 className="text-3xl font-bold">Action Games</h1>
+        <h1 className="text-3xl font-bold"> Games </h1>
       </div>
       <div className="mt-2 flex gap-3">
         <Button

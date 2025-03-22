@@ -4,9 +4,12 @@ import classes from './App.module.css';
 import Navbar from './components/navbar';
 import Content from './components/content/content';
 import { useNavbar } from './contexts/NavbarContext';
+import { useParams } from '@tanstack/react-router';
 
 function App() {
   const { opened } = useNavbar();
+  const params = useParams({ strict: false }); // slug varsa al
+  const slug = params?.slug || null;
 
   return (
     <AppShell
@@ -27,7 +30,7 @@ function App() {
       </AppShell.Navbar>
 
       <AppShell.Main className={classes.main}>
-        <Content></Content>
+        <Content slug={slug}></Content>
       </AppShell.Main>
     </AppShell>
   );

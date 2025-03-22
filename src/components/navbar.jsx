@@ -12,7 +12,7 @@ function Navbar() {
       <div className="flex   justify-between   h-full  ">
         <div className="h-full flex items-center">
           <IconAlignLeft2 className=" ml-5" onClick={toggle}></IconAlignLeft2>
-          <img className="h-full p-1 ml-5" src="logo.png" />
+          <img className="h-full p-1 ml-5" src="/logo.png" />
           <h1 className="text-Black ml-3 font-bold text-2xl text-white">
             Reddit
           </h1>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import iconMapper from '../../../utils/iconMapper';
+import { Link } from '@tanstack/react-router';
 
 function Category({ title, aytım, iconName }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,10 +11,11 @@ function Category({ title, aytım, iconName }) {
 
   return (
     <div
-      onClick={handleClick}
+      
       className="flex flex-col bg-none  rounded-2xl w-50 px-3 py-2 hover:bg-[var(--mantine-color-default-hover)] "
     >
-      <div className="flex gap-3">
+      <div onClick={handleClick} className="flex gap-3">
+      
         <h1>{iconMapper[iconName]}</h1>
         <h1>{title}</h1>
       </div>
@@ -21,8 +23,8 @@ function Category({ title, aytım, iconName }) {
       <div>
         <ul className={isOpen ? 'block' : 'hidden'}>
           {aytım.map((it, index) => (
-            <li className=" px-3 py-2 pl-9 rounded-2xl" key={index}>
-              {it}
+            <li className=" px-3 py-2 pl-9 rounded-2xl hover:bg-gray-500/20" key={index}>
+              <Link to={`/t/${it}`}>{it}</Link>
             </li>
           ))}
         </ul>
