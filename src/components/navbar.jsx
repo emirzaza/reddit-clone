@@ -9,7 +9,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="flex   justify-between   h-full  ">
+      <div className="flex justify-between h-full">
         <div className="h-full flex items-center">
           <IconAlignLeft2 className=" ml-5" onClick={toggle}></IconAlignLeft2>
           <img className="h-full p-1 ml-5" src="/logo.png" />

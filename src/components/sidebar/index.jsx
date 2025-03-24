@@ -51,7 +51,9 @@ function Index() {
           .filter(item => item.type === 'single')
           .map((item, index) => (
             <li key={index}>
-              <Link to={`/t/${item.slug}`}><Single title={item.title} iconName={item.icon}></Single></Link>
+              <Link to={`/t/${item.slug}`}>
+                <Single title={item.title} iconName={item.icon}></Single>
+              </Link>
             </li>
           ))}
 
@@ -59,12 +61,14 @@ function Index() {
           .filter(item => item.type === 'category')
           .map((item, index) => (
             <li key={index}>
-             <Category
+              <Category
                 title={item.category.title}
                 iconName={item.category.icon}
-                aytım={item.items.map(subItem => subItem.title)}
-              > </Category>
-              
+                aytım={item.items.map(subItem => ({
+                  slug: subItem.slug,
+                  title: subItem.title,
+                }))}
+              ></Category>
             </li>
           ))}
       </ul>

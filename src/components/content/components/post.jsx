@@ -1,20 +1,20 @@
 import { Button } from '@mantine/core';
 
-function Post({img, prg}) {
+function Post({ img, prg, profile, user, date }) {
   return (
-    <div className="flex flex-col mt-5 ">
+    <div className="flex flex-col mt-5 p-3 rounded-2xl hover:bg-[var(--mantine-color-default-hover)]">
       <div className="flex justify-between items-center ">
         <div className="flex flex-row h-10 gap-2">
-          <img src='./sct.jpg' className='rounded-full  size-9'></img>
-          <p>username</p>
-          <p>3 hours ago</p>
+          <img src={profile} className="rounded-full  size-9" />
+          <p>{user}</p>
+          <p>{date}</p>
         </div>
         <div></div>
       </div>
 
       <div className="flex flex-col">
-        <p>selamlar</p>
-        <img src={img}/>
+        <p>{prg}</p>
+        <img className="rounded-xl" src={img} />
       </div>
 
       <div className="flex gap-3 mt-1">

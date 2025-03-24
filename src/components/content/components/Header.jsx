@@ -1,12 +1,13 @@
 import { Button } from '@mantine/core';
 import { useState } from 'react';
-function Header({name}) {
+function Header({ title, parent }) {
   const [on, setOn] = useState(true);
 
   return (
     <div className="flex flex-col">
-      <div>
-        <h1 className="text-3xl font-bold"> Games </h1>
+      <div className="flex flex-col">
+        <h1 className="text-3xl font-bold"> {title} </h1>
+        <p>{parent}</p>
       </div>
       <div className="mt-2 flex gap-3">
         <Button
