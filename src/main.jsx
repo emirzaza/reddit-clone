@@ -7,9 +7,11 @@ import NavbarProvider from './contexts/NavbarContext';
 import '@mantine/core/styles.css';
 import './tailwind.css';
 import './services/server';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // Create a new router instance
 const router = createRouter({ routeTree });
+const queryClient = new QueryClient();
 
 // Render the app
 const rootElement = document.getElementById('root');
@@ -20,7 +22,9 @@ if (!rootElement.innerHTML) {
     <StrictMode>
       <MantineProvider defaultColorScheme="dark">
         <NavbarProvider>
-          <RouterProvider router={router} />
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+          </QueryClientProvider>
         </NavbarProvider>
       </MantineProvider>
     </StrictMode>

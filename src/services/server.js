@@ -135,6 +135,22 @@ createServer({
                 'A subreddit dedicated to Red Dead Redemption & Red Dead Redemption 2, developed by Rockstar Games, the creators behind the Grand Theft Auto series.',
               members: 2300509,
             },
+            {
+              slug: 'bilgenin grup',
+              imageUrl:
+                'https://styles.redditmedia.com/t5_2rn7o/styles/communityIcon_2083me9o3ia21.png',
+              description:
+                'A subreddit dedicated to Red Dead Redemption & Red Dead Redemption 2, developed by Rockstar Games, the creators behind the Grand Theft Auto series.',
+              members: 1020000,
+            },
+            {
+              slug: 'emirin grup',
+              imageUrl:
+                'https://styles.redditmedia.com/t5_2rn7o/styles/communityIcon_2083me9o3ia21.png',
+              description:
+                'A subreddit dedicated to Red Dead Redemption & Red Dead Redemption 2, developed by Rockstar Games, the creators behind the Grand Theft Auto series.',
+              members: 2333567,
+            },
           ],
           parentSlug: 'games',
         },
