@@ -110,7 +110,7 @@ createServer({
         bilge: [
           {
             id: 1,
-            img: '/image4.jpg',
+            img: '/image2.jpg',
             content:
               'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
             username: 'bilgebiri',
@@ -119,7 +119,7 @@ createServer({
           },
           {
             id: 2,
-            img: '/image4.jpg',
+            img: '/image1.jpg',
             content:
               'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
             username: 'bilgebiri',
@@ -128,7 +128,7 @@ createServer({
           },
           {
             id: 3,
-            img: '/image4.jpg',
+            img: '/image0.jpg',
             content:
               'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
             username: 'bilgebiri',

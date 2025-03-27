@@ -1,4 +1,7 @@
-function ComItem({ img, name, num, p }) {
+import Rounder from '../../../../utils/rounder';
+
+function ComItem({ img, name, memberCount, description }) {
+  const roundedNumber = Rounder(memberCount);
   return (
     <div className="flex  p-2 items-center text-xs my-2 hover:bg-[var(--mantine-color-default-hover)] rounded-2xl">
       <div className="flex gap-2 ">
@@ -7,8 +10,8 @@ function ComItem({ img, name, num, p }) {
         </div>
         <div>
           <p className="font-bold">{name}</p>
-          <p>{p}</p>
-          <p>{num}</p>
+          <p>{description}</p>
+          <p>{roundedNumber}</p>
         </div>
       </div>
     </div>

@@ -4,20 +4,16 @@ import ComItem from './ComItem';
 function CommunityTab() {
   const { info } = Route.useLoaderData();
 
-  return (
-    <div>
-      {info.communities.map((com, index) => {
-        return (
-          <ComItem
-            key={index}
-            img={com.imageUrl}
-            name={com.slug}
-            num={com.members}
-            p={com.description}
-          />
-        );
-      })}
-    </div>
-  );
+  return info.communities.map((com, index) => {
+    return (
+      <ComItem
+        key={index}
+        img={com.imageUrl}
+        name={com.slug}
+        memberCount={com.members}
+        description={com.description}
+      />
+    );
+  });
 }
 export default CommunityTab;
