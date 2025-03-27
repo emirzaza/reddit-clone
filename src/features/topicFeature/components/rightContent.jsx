@@ -48,12 +48,11 @@ function CommunityItem({ img, name, num }) {
 }
 
 function Communities() {
-  const { data: data } = Route.useLoaderData();
-  console.log('a', data.communities);
+  const { info } = Route.useLoaderData();
 
   return (
     <div>
-      {data.communities.map((com, index) => {
+      {info.communities.map((com, index) => {
         return (
           <CommunityItem
             key={index}

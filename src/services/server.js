@@ -106,15 +106,36 @@ createServer({
         games: { content: 'Game content', img: '/image1.jpg' },
         books: { img: '/image0.jpg', content: 'Book content' },
         movies: { img: '/image2.jpg', content: 'Movie content' },
-        emir: { img: '/image3.jpg', content: 'Emir içeriği' },
-        bilge: {
-          img: '/image4.jpg',
-          content:
-            'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
-          username: 'bilgebiri',
-          date: '11 hours ago',
-          profilePic: '/sct.jpg',
-        },
+        emir: [{ img: '/image3.jpg', content: 'Emir içeriği' }],
+        bilge: [
+          {
+            id: 1,
+            img: '/image4.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
+            username: 'bilgebiri',
+            date: '11 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 2,
+            img: '/image4.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
+            username: 'bilgebiri',
+            date: '11 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 3,
+            img: '/image4.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
+            username: 'bilgebiri',
+            date: '11 hours ago',
+            profilePic: '/sct.jpg',
+          },
+        ],
       };
 
       return data[slug] || new Response(404, {}, { error: 'Not found' });
@@ -129,6 +150,36 @@ createServer({
           communities: [
             {
               slug: 'reddeadredemption',
+              imageUrl:
+                'https://styles.redditmedia.com/t5_2rn7o/styles/communityIcon_2083me9o3ia21.png',
+              description:
+                'A subreddit dedicated to Red Dead Redemption & Red Dead Redemption 2, developed by Rockstar Games, the creators behind the Grand Theft Auto series.',
+              members: 2300509,
+            },
+            {
+              slug: 'bilgenin grup',
+              imageUrl:
+                'https://styles.redditmedia.com/t5_2rn7o/styles/communityIcon_2083me9o3ia21.png',
+              description:
+                'A subreddit dedicated to Red Dead Redemption & Red Dead Redemption 2, developed by Rockstar Games, the creators behind the Grand Theft Auto series.',
+              members: 1020000,
+            },
+            {
+              slug: 'emirin grup',
+              imageUrl:
+                'https://styles.redditmedia.com/t5_2rn7o/styles/communityIcon_2083me9o3ia21.png',
+              description:
+                'A subreddit dedicated to Red Dead Redemption & Red Dead Redemption 2, developed by Rockstar Games, the creators behind the Grand Theft Auto series.',
+              members: 2333567,
+            },
+          ],
+          parentSlug: 'games',
+        },
+        emir: {
+          title: 'emir Games',
+          communities: [
+            {
+              slug: 'allah',
               imageUrl:
                 'https://styles.redditmedia.com/t5_2rn7o/styles/communityIcon_2083me9o3ia21.png',
               description:
