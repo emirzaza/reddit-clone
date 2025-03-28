@@ -102,17 +102,18 @@ createServer({
     this.get('/api/topics/:slug/posts', (schema, request) => {
       const slug = request.params.slug;
 
+      // Örnek veri kümesi
       const data = {
         games: { content: 'Game content', img: '/image1.jpg' },
         books: { img: '/image0.jpg', content: 'Book content' },
         movies: { img: '/image2.jpg', content: 'Movie content' },
-        emir: [{ img: '/image3.jpg', content: 'Emir içeriği' }],
+        emir: [{ id: 1, img: '/image3.jpg', content: 'Emir içeriği' }],
         bilge: [
           {
             id: 1,
             img: '/image2.jpg',
             content:
-              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 1 dir :)',
             username: 'bilgebiri',
             date: '11 hours ago',
             profilePic: '/sct.jpg',
@@ -121,24 +122,136 @@ createServer({
             id: 2,
             img: '/image1.jpg',
             content:
-              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 12 dir :)',
             username: 'bilgebiri',
-            date: '11 hours ago',
+            date: '10 hours ago',
             profilePic: '/sct.jpg',
           },
           {
             id: 3,
             img: '/image0.jpg',
             content:
-              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir :)',
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 13 dir :)',
+            username: 'bilgebiri',
+            date: '9 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 4,
+            img: '/image3.jpg',
+            content: 'Bilge içerik devamı idsi 4dir ...',
+            username: 'bilgebiri',
+            date: '8 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 5,
+            img: '/image2.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 1 dir :)',
             username: 'bilgebiri',
             date: '11 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 6,
+            img: '/image1.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 12 dir :)',
+            username: 'bilgebiri',
+            date: '10 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 7,
+            img: '/image0.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 13 dir :)',
+            username: 'bilgebiri',
+            date: '9 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 8,
+            img: '/image3.jpg',
+            content: 'Bilge içerik devamı idsi 4dir ...',
+            username: 'bilgebiri',
+            date: '8 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 9,
+            img: '/image2.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 1 dir :)',
+            username: 'bilgebiri',
+            date: '11 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 10,
+            img: '/image1.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 12 dir :)',
+            username: 'bilgebiri',
+            date: '10 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 11,
+            img: '/image0.jpg',
+            content:
+              'selamlar bu bilge içeriğinden gelen bir pararaf metnidir idsi 13 dir :)',
+            username: 'bilgebiri',
+            date: '9 hours ago',
+            profilePic: '/sct.jpg',
+          },
+          {
+            id: 12,
+            img: '/image3.jpg',
+            content: 'Bilge içerik devamı idsi 4dir ...',
+            username: 'bilgebiri',
+            date: '8 hours ago',
             profilePic: '/sct.jpg',
           },
         ],
       };
 
-      return data[slug] || new Response(404, {}, { error: 'Not found' });
+      // Eğer slug bulunamazsa 404 hatası döndür
+      if (!data[slug]) {
+        return new Response(404, {}, { error: 'Not found' });
+      }
+
+      // Eğer slug bir array değilse, doğrudan içeriği döndür
+      if (!Array.isArray(data[slug])) {
+        return data[slug];
+      }
+
+      // Cursor ve limit değerlerini al
+      const cursor = parseInt(request.queryParams.cursor, 10) || 0;
+      const limit = parseInt(request.queryParams.limit, 10) || 2;
+
+      // Veriyi filtrele ve cursor mantığını uygula
+      const allPosts = data[slug];
+
+      // Cursor'un son id'yi takip ettiğini düşünerek slice uygula
+      const startIndex = allPosts.findIndex(post => post.id === cursor);
+      const start = startIndex === -1 ? 0 : startIndex + 1;
+      const end = start + limit;
+
+      // Seçilen sayfadaki verileri slice ile al
+      const paginatedData = allPosts.slice(start, end);
+
+      // Bir sonraki cursor'u belirle
+      const nextCursor =
+        paginatedData.length > 0
+          ? paginatedData[paginatedData.length - 1].id
+          : null;
+
+      return {
+        posts: paginatedData,
+        nextCursor,
+      };
     });
 
     this.get('/api/topics/:slug', (scheme, request) => {

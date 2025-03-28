@@ -2,7 +2,7 @@ import { Button } from '@mantine/core';
 
 function Post({ img, prg, profile, user, date }) {
   return (
-    <div className="flex items-center sm:w-1/2">
+    <div className="flex items-center ">
       <div className="flex flex-col mt-5 p-3 rounded-2xl  hover:bg-[var(--mantine-color-default-hover)]">
         <div className="flex  items-center ">
           <div className="flex flex-row h-10 gap-2">
