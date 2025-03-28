@@ -1,4 +1,4 @@
-import Rounder from '../../../../utils/rounder';
+import Rounder from '../../../../../utils/rounder';
 
 function ComItem({ img, name, memberCount, description }) {
   const roundedNumber = Rounder(memberCount);

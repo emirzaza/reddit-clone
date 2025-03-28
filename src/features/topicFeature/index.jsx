@@ -1,23 +1,14 @@
-import Header from './components/Header';
-import { useTopicStore } from './contexts/TopicStoreProvider';
-import { useStore } from 'zustand';
+import Header from './components/header/Header';
 import Providers from './providers';
-import PostsTab from './components/PostsTab';
-
-import CommunityTab from './components/CommunityTab';
 import RightTab from './components/rightTab';
+import Tabs from './components/Tabs';
 
 const TopicPage = () => {
-  const store = useTopicStore();
-  const activeTab = useStore(store, state => state.activeTab);
-
   return (
     <div className="flex justify-center flex-row">
       <div className="flex flex-col  hover:'var(--mantine-color-hover)'">
         <Header />
-
-        {activeTab === 'posts' && <PostsTab />}
-        {activeTab === 'communities' && <CommunityTab />}
+        <Tabs />
       </div>
       <div className="mt-40">
         <RightTab></RightTab>

@@ -1,4 +1,4 @@
-import { Route } from '../../../../routes/t.$slug';
+import { Route } from '../../../../../routes/t.$slug';
 import Post from './post';
 
 const PostsTab = () => {

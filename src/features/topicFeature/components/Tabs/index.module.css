@@ -1,0 +1,26 @@
+.clicked {
+  background-color: var(--mantine-color-placeholder);
+  padding: 5px 10px;
+  border-radius: 4rem;
+  border: 1px solid gray;
+  color: var(--mantine-color-text);
+}
+.clicked:hover {
+  background-color: var(--mantine-color-placeholder-hover, #e0e0e0);
+  color: black;
+  transform: scale(1.05);
+}
+
+.normal {
+  background-color: transparent;
+  padding: 5px 10px;
+  border-radius: 4rem;
+  border: 1px solid gray;
+  color: var(--mantine-color-text);
+}
+
+.normal:hover {
+  background-color: var(--mantine-color-hover, #f0f0f0);
+  color: black;
+  transform: scale(1.05);
+}
