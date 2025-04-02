@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as TSlugImport } from './routes/t.$slug'
+import { Route as RSlugImport } from './routes/r.$slug'
 
 // Create/Update Routes
 
@@ -28,6 +29,12 @@ const TSlugRoute = TSlugImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const RSlugRoute = RSlugImport.update({
+  id: '/r/$slug',
+  path: '/r/$slug',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -37,6 +44,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/r/$slug': {
+      id: '/r/$slug'
+      path: '/r/$slug'
+      fullPath: '/r/$slug'
+      preLoaderRoute: typeof RSlugImport
       parentRoute: typeof rootRoute
     }
     '/t/$slug': {
@@ -53,36 +67,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/r/$slug': typeof RSlugRoute
   '/t/$slug': typeof TSlugRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/r/$slug': typeof RSlugRoute
   '/t/$slug': typeof TSlugRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/r/$slug': typeof RSlugRoute
   '/t/$slug': typeof TSlugRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/t/$slug'
+  fullPaths: '/' | '/r/$slug' | '/t/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/t/$slug'
-  id: '__root__' | '/' | '/t/$slug'
+  to: '/' | '/r/$slug' | '/t/$slug'
+  id: '__root__' | '/' | '/r/$slug' | '/t/$slug'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  RSlugRoute: typeof RSlugRoute
   TSlugRoute: typeof TSlugRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RSlugRoute: RSlugRoute,
   TSlugRoute: TSlugRoute,
 }
 
@@ -97,11 +116,15 @@ export const routeTree = rootRoute
       "filePath": "__root.jsx",
       "children": [
         "/",
+        "/r/$slug",
         "/t/$slug"
       ]
     },
     "/": {
       "filePath": "index.jsx"
+    },
+    "/r/$slug": {
+      "filePath": "r.$slug.jsx"
     },
     "/t/$slug": {
       "filePath": "t.$slug.jsx"

@@ -24,7 +24,6 @@ export const Route = createFileRoute('/t/$slug')({
     const info = await infoResponse.json();
     const posts = await postsResponse.json();
 
-    console.log('a', posts);
     return { info, posts };
   },
   pendingComponent: Loading,

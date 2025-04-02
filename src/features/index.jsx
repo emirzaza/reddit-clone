@@ -1,3 +1,4 @@
 import TopicFeature from './topicFeature';
+import PostsFeature from './postsFeature';
 
-export { TopicFeature };
+export { TopicFeature, PostsFeature };
