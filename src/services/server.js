@@ -117,6 +117,7 @@ createServer({
             username: 'bilgebiri',
             date: '11 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 2,
@@ -126,6 +127,7 @@ createServer({
             username: 'bilgebiri',
             date: '10 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'bebe',
           },
           {
             id: 3,
@@ -135,6 +137,7 @@ createServer({
             username: 'bilgebiri',
             date: '9 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'dede',
           },
           {
             id: 4,
@@ -143,6 +146,7 @@ createServer({
             username: 'bilgebiri',
             date: '8 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 5,
@@ -152,6 +156,7 @@ createServer({
             username: 'bilgebiri',
             date: '11 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 6,
@@ -161,6 +166,7 @@ createServer({
             username: 'bilgebiri',
             date: '10 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 7,
@@ -170,6 +176,7 @@ createServer({
             username: 'bilgebiri',
             date: '9 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 8,
@@ -178,6 +185,7 @@ createServer({
             username: 'bilgebiri',
             date: '8 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 9,
@@ -187,6 +195,7 @@ createServer({
             username: 'bilgebiri',
             date: '11 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 10,
@@ -196,6 +205,7 @@ createServer({
             username: 'bilgebiri',
             date: '10 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 11,
@@ -205,6 +215,7 @@ createServer({
             username: 'bilgebiri',
             date: '9 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
           {
             id: 12,
@@ -213,6 +224,7 @@ createServer({
             username: 'bilgebiri',
             date: '8 hours ago',
             profilePic: '/sct.jpg',
+            slug: 'deniz',
           },
         ],
       };
