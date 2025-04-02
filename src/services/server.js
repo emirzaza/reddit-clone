@@ -322,5 +322,146 @@ createServer({
 
       return data[slug] || new Response(404, {}, { error: 'Not found' });
     });
+
+    this.get('/api/posts/:slug', (schema, request) => {
+      const slug = request.params.slug;
+
+      const data = {
+        deniz: {
+          topic: {
+            slug: 'deniz',
+            imageUrl: '/image0.jpg',
+            memberCount: 120333,
+            onlineCount: 15,
+            description: 'aselammammm deniin subının descripti',
+          },
+          user: {
+            username: 'denizFaça',
+            imageUrl: '/sct.jpg',
+            joinDate: '11.02.2002',
+            bio: 'denizin biosu budur',
+            postKarma: 1736,
+            commentKarma: 3232,
+          },
+          createdAt: '22.01.2023',
+          title:
+            'selamlar bu denizin titleı ve bunu uzatıram neler olacağını deniyorum',
+          description: 'bu deniz beyin descriptionıı',
+          upvoteCount: 6566831,
+        },
+      };
+      return data[slug]
+        ? { post: data[slug] }
+        : new Response(404, {}, { error: 'Not found' });
+    });
+
+    this.get('/api/posts/:slug/comments', (schema, request) => {
+      const slug = request.params.slug;
+
+      const data = {
+        deniz: {
+          totalCount: 4,
+          list: [
+            {
+              id: 1,
+              user: 'denizFaça',
+              message:
+                'hoşuma gitmedi bu konu hakkında yorumda bulunmayacağım çünkü riskli',
+              upvoteCount: 13,
+              imgUrl: '/image0.jpg',
+              date: '4 hours ago',
+            },
+            {
+              id: 2,
+              user: 'denizFaça',
+              message:
+                'bence gayet güzel loremyok çalışmadı lorem vıfdmkfdmodfmod',
+              upvoteCount: 22,
+              imgUrl: '/image0.jpg',
+              date: '3 min ago',
+            },
+            {
+              id: 3,
+              user: 'mehmet35',
+              message:
+                'çok bilmişsiniz hello naber hhhhhhe njdnjdnjn njdanjdndnıdınd jdwndnwdwn dnjdnwduwn dnwwudwnu',
+              upvoteCount: 5,
+              imgUrl: '/image2.jpg',
+              date: '1 hour ago',
+            },
+            {
+              id: 4,
+              user: 'codequeen',
+              message: 'harika anlatım!',
+              upvoteCount: 100,
+              imgUrl: '/image1.jpg',
+              date: '13 min ago',
+            },
+            {
+              id: 5,
+              user: 'denizFaça',
+              message:
+                'hoşuma gitmedi bu konu hakkında yorumda bulunmayacağım çünkü riskli',
+              upvoteCount: 13,
+              imgUrl: '/image0.jpg',
+              date: '4 hours ago',
+            },
+            {
+              id: 6,
+              user: 'denizFaça',
+              message:
+                'bence gayet güzel loremyok çalışmadı lorem vıfdmkfdmodfmod',
+              upvoteCount: 22,
+              imgUrl: '/image0.jpg',
+              date: '3 min ago',
+            },
+            {
+              id: 7,
+              user: 'mehmet35',
+              message:
+                'çok bilmişsiniz hello naber hhhhhhe njdnjdnjn njdanjdndnıdınd jdwndnwdwn dnjdnwduwn dnwwudwnu',
+              upvoteCount: 5,
+              imgUrl: '/image2.jpg',
+              date: '1 hour ago',
+            },
+            {
+              id: 8,
+              user: 'codequeen',
+              message: 'harika anlatım!',
+              upvoteCount: 100,
+              imgUrl: '/image1.jpg',
+              date: '13 min ago',
+            },
+          ],
+        },
+      };
+      if (!data[slug]) {
+        return new Response(404, {}, { error: 'Not found' });
+      }
+
+      const allComments = data[slug].list; // 🔴 BURASI çok önemli
+
+      const cursor = parseInt(request.queryParams.cursor, 10) || 0;
+      const limit = parseInt(request.queryParams.limit, 10) || 4;
+
+      const startIndex =
+        cursor === 0
+          ? 0
+          : allComments.findIndex(comment => comment.id === cursor) + 1;
+
+      const paginatedData = allComments.slice(startIndex, startIndex + limit);
+
+      const nextCursor =
+        startIndex + limit < allComments.length
+          ? allComments[startIndex + limit - 1].id
+          : null;
+
+      return {
+        comments: {
+          list: paginatedData,
+          nextCursor,
+        },
+      };
+    });
   },
 });
